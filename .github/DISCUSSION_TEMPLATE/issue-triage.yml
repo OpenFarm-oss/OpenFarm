@@ -1,0 +1,130 @@
+labels: ["needs-confirmation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!IMPORTANT]
+        > Please check for both existing [Discussions](https://github.com/OpenFarm-oss/OpenFarm/discussions?discussions_q=) and [Issues](https://github.com/OpenFarm-oss/OpenFarm/issues?q=sort%3Areactions-desc) prior to opening a new Discussion.
+  - type: markdown
+    attributes:
+      value: "# Issue Details"
+  - type: textarea
+    attributes:
+      label: Issue Description
+      description: |
+        Provide a detailed description of the issue.  Include relevant information, such as:
+        - The feature/service you encounter the issue with.
+        - Screenshots, screen recordings, or other supporting media (as needed).
+        - If this is a regression of an existing issue that was closed or resolved, please include the previous item reference (Discussion, Issue, PR, commit) in your description.
+      placeholder: |
+        When sending out reply emails to patrons, depending on the platform they are not rendered as replies in some email clients. In GMail they are rendered correctly, but they are not rendered as replies in OutLook. I do not have a Apple Mail account to test against.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: |
+        Describe how you expect OpenFarm to behave in this situation.  Include any relevant documentation links.
+      placeholder: |
+        When sending a reply message to a patron, it should always render as a reply regardless of the patron's email client.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual Behavior
+      description: |
+        Describe how OpenFarm actually behaves in this situation.  If it is not immediately obvious how the actual behavior differs from the expected behavior described above, please be sure to mention the deviation specifically.
+      placeholder: |
+        When sending out reply emails to patrons, depending on the platform they are not rendered as replies in some email clients, in this case OutLook.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproduction Steps
+      description: |
+        Provide a detailed set of step-by-step instructions for reproducing this issue.
+      placeholder: |
+        1. Open the FarmHouse desktop app.
+        2. Send an email from a patron email address to the email being utilized by OpenFarm matching the GMAIL_EMAIL environment variable.
+        3. As an operator reply to this email.
+        4. Observe in OutLook email client on the patron's account this was not rendered as a reply.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: OpenFarm Logs
+      description: |
+        Provide any captured OpenFarm logs during your issue reproduction in this field.
+
+        > [!IMPORTANT]
+        > Please ensure to remove/redact any PII information from any service logging with [REDACTED]
+        > Failure to do so will lead to immediately removal of this discussion.
+
+        Example:
+
+        ```json
+        {
+            "Timestamp": "2026-01-02T04:41:32.2922569+00:00",
+            "Level": "Information",
+            "MessageTemplate": "Email sent to {Recipient}: {Subject} (Ref: {MessageId}) [Timing: {TotalMs}ms]",
+            "Properties": {
+                "Recipient": "[REDACTED]",
+                "Subject": "Job Rejected #3",
+                "MessageId": "[REDACTED]",
+                "TotalMs": 620,
+                "EmailSendEvent": {
+                    "Operation": "email_send",
+                    "Recipient": "[REDACTED]",
+                    "Subject": "Job Rejected #3",
+                    "MessageId": "[REDACTED]",
+                    "HasInReplyTo": false,
+                    "HasReferences": false,
+                    "HasThreadIndex": true,
+                    "RetryCount": 0,
+                    "Outcome": "success",
+                    "ErrorType": null,
+                    "ErrorMessage": null,
+                    "Timing": {
+                        "ConnectMs": 0,
+                        "SendMs": 619,
+                        "TotalMs": 620,
+                        "_typeTag": "EmailSendTiming"
+                    },
+                    "_typeTag": "EmailSendEvent"
+                },
+                "SourceContext": "EmailService.Services.EmailDeliveryService"
+            }
+        }
+        ```
+
+      placeholder: Enter appropriate logs here...
+  - type: input
+    attributes:
+      label: OS Version Information
+      description: |
+        Please tell us what operating system (name and version) you are using.
+      placeholder: Ubuntu 24.04.1 (Noble Numbat)
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: (Linux only) Desktop Environment/Window Manager
+      description: |
+        If you run Linux, please tell us what Desktop Environment/Window Manager you are using (include the name and version).
+      placeholder: GNOME 47.4
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        # User Acknowledgements
+        > [!TIP]
+        > Use these links to review the existing OpenFarm [Discussions](https://github.com/OpenFarm-oss/OpenFarm/discussions?discussions_q=) and [Issues](https://github.com/OpenFarm-oss/OpenFarm/issues?q=sort%3Areactions-desc).
+  - type: checkboxes
+    attributes:
+      label: "I acknowledge that:"
+      options:
+        - label: I have searched the OpenFarm repository (both open and closed Discussions and Issues) and confirm this is not a duplicate of an existing issue or discussion.
+          required: true
+        - label: I have checked the "Preview" tab on all text fields to ensure that everything looks right, and have wrapped all configuration and code in code blocks with a group of three backticks (` ``` `) on separate lines.
+          required: true
