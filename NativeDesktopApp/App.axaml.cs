@@ -5,6 +5,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using DatabaseAccess;
+using NativeDesktopApp.Models;
 using NativeDesktopApp.ViewModels;
 using NativeDesktopApp.Views;
 using RabbitMQHelper;
@@ -33,9 +34,10 @@ public class App : Application
                 throw new InvalidOperationException("Database connection string not set.");
 
             var databaseAccessHelper = new DatabaseAccessHelper(conn);
+            AppStateModel appStateModel = new AppStateModel(databaseAccessHelper, rabbitMqHelper);
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(databaseAccessHelper, rabbitMqHelper)
+                DataContext = new MainWindowViewModel(appStateModel)
             };
         }
 

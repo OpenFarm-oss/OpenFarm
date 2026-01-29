@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using DatabaseAccess;
+using NativeDesktopApp.Models;
 using RabbitMQHelper;
 
 namespace NativeDesktopApp.ViewModels;
@@ -25,13 +26,11 @@ namespace NativeDesktopApp.ViewModels;
 /// </summary>
 public abstract class ViewModelBase : INotifyPropertyChanged
 {
-    protected readonly DatabaseAccessHelper _databaseAccessHelper;
-    protected readonly IRmqHelper _rmqHelper;
+    private readonly AppStateModel _appStateModel;
 
-    protected ViewModelBase(DatabaseAccessHelper databaseAccessHelper, IRmqHelper rmqHelper)
+    protected ViewModelBase(AppStateModel appStateModel)
     {
-        _databaseAccessHelper = databaseAccessHelper;
-        _rmqHelper = rmqHelper;
+        _appStateModel = appStateModel;
     }
 
     /// <summary>

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using NativeDesktopApp.Views;
 using DatabaseAccess;
+using NativeDesktopApp.Models;
 using RabbitMQHelper;
 
 namespace NativeDesktopApp.ViewModels;
@@ -26,26 +27,11 @@ public class MainWindowViewModel : ViewModelBase
     // Backing field for SelectedTabIndex
     private int _selectedTabIndex;
 
-    /// <summary>
-    /// Initializes a new instance of <see cref="MainWindowViewModel"/>,
-    /// setting the default tab to Home and instantiating its corresponding ViewModel.
-    /// </summary>
-    public MainWindowViewModel() : this(CreateDbHelper(), new RmqHelper())
-    {
-    }
-
-    public MainWindowViewModel(DatabaseAccessHelper db, IRmqHelper rmq) : base(db, rmq)
+    public MainWindowViewModel(AppStateModel appStateModel) : base(appStateModel)
     {
         // Default to the Home tab
         SelectedTabIndex = 0;
         UpdateCurrentViewModel();
-    }
-
-    private static DatabaseAccessHelper CreateDbHelper()
-    {
-        var conn = Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING");
-        if (string.IsNullOrEmpty(conn)) throw new InvalidOperationException("Database connection string not set.");
-        return new DatabaseAccessHelper(conn.Trim('"'));
     }
 
     /// <summary>
