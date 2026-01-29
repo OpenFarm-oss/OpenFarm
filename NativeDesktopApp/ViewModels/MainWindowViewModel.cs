@@ -3,14 +3,14 @@
 //   Keeps track of the selected tab index and updates CurrentViewModel accordingly.
 // -----------------------------------------------------------------------------
 
-using native_desktop_app.ViewModels;
+using NativeDesktopApp.ViewModels;
 using System;
 using System.Collections.Generic;
-using native_desktop_app.Views;
+using NativeDesktopApp.Views;
 using DatabaseAccess;
 using RabbitMQHelper;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     The main window view model that manages active tab navigation.

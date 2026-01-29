@@ -1,8 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="native_desktop_app.Views.HomeView"
+             x:Class="NativeDesktopApp.Views.HomeView"
              x:DataType="vm:HomeViewModel"
-             xmlns:vm="using:native_desktop_app.ViewModels">
+             xmlns:vm="using:NativeDesktopApp.ViewModels">
     <!-- Box in middle is twice the size as the other two -->
     <Grid ColumnDefinitions="*,2*,*"
           Margin="20">

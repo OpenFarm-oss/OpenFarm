@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace native_desktop_app.Views;
+namespace NativeDesktopApp.Views;
 
 public partial class MaintenanceView : UserControl
 {

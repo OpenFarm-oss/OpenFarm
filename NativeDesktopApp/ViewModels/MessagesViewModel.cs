@@ -19,7 +19,7 @@ using RabbitMQHelper;
 using RabbitMQHelper.MessageTypes;
 using DbMessage = DatabaseAccess.Models.EmailMessage;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     Lightweight row model for the inbox grid.

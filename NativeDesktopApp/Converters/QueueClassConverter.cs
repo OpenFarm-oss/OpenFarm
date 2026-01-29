@@ -3,7 +3,7 @@ using System.Globalization;
 using Avalonia.Data.Converters;
 using DatabaseAccess.Models;
 
-namespace native_desktop_app.Converters;
+namespace NativeDesktopApp.Converters;
 
 // True when JobStatus == "operatorApproved" AND Paid == true
 public sealed class QueueClassConverter : IValueConverter

@@ -13,7 +13,7 @@ using System.Runtime.CompilerServices;
 using DatabaseAccess;
 using RabbitMQHelper;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     Base class for view models implementing <see cref="INotifyPropertyChanged" />.

@@ -4,7 +4,7 @@ using Avalonia;
 using Avalonia.Data.Converters;
 using DatabaseAccess.Models;
 
-namespace native_desktop_app.ViewModels
+namespace NativeDesktopApp.ViewModels
 {
     public sealed class DayFlagConverter : IValueConverter
     {

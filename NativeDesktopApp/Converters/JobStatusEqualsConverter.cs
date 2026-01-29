@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using Avalonia.Data.Converters;
 
-namespace native_desktop_app.Converters;
+namespace NativeDesktopApp.Converters;
 
 /// <summary>
 ///     Returns true when the bound value (e.g., "printing") equals the ConverterParameter

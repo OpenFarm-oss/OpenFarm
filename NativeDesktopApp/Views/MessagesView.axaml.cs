@@ -1,7 +1,7 @@
 using Avalonia.Controls;
-using native_desktop_app.ViewModels;
+using NativeDesktopApp.ViewModels;
 
-namespace native_desktop_app.Views;
+namespace NativeDesktopApp.Views;
 
 public partial class MessagesView : UserControl
 {

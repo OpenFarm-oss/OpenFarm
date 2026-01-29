@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using native_desktop_app.ViewModels;
+using NativeDesktopApp.ViewModels;
 
-namespace native_desktop_app;
+namespace NativeDesktopApp;
 
 public class ViewLocator : IDataTemplate
 {

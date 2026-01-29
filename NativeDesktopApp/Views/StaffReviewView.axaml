@@ -1,7 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:native_desktop_app.ViewModels"
-             x:Class="native_desktop_app.Views.StaffReviewView"
+             xmlns:vm="using:NativeDesktopApp.ViewModels"
+             x:Class="NativeDesktopApp.Views.StaffReviewView"
              x:DataType="vm:StaffReviewViewModel">
 
     <Grid ColumnDefinitions="2*,3*" Margin="10">

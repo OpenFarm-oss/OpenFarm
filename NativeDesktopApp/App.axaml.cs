@@ -5,11 +5,11 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using DatabaseAccess;
-using native_desktop_app.ViewModels;
-using native_desktop_app.Views;
+using NativeDesktopApp.ViewModels;
+using NativeDesktopApp.Views;
 using RabbitMQHelper;
 
-namespace native_desktop_app;
+namespace NativeDesktopApp;
 
 public class App : Application
 {

@@ -1,4 +1,3 @@
-// namespace native_desktop_app.Converters
 using System;
 using System.Collections.Generic;
 using System.Globalization;

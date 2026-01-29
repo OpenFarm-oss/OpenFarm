@@ -19,7 +19,7 @@ using DatabaseAccess.Models;
 using RabbitMQHelper;
 using Color = Avalonia.Media.Color;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 // Purpose
 //   ConfigViewModel for the Config tab. Allows operators to configure system settings,

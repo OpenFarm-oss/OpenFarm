@@ -1,7 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:native_desktop_app.ViewModels"
-             x:Class="native_desktop_app.Views.StatsView"
+             xmlns:vm="using:NativeDesktopApp.ViewModels"
+             x:Class="NativeDesktopApp.Views.StatsView"
              x:DataType="vm:StatsViewModel"
              Background="#282828">
     <DockPanel LastChildFill="True">

@@ -14,7 +14,7 @@ using DatabaseAccess.Models;
 using ImageExample.Helpers;
 using RabbitMQHelper;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     Home dashboard view model.

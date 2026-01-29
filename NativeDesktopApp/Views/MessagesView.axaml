@@ -1,7 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:native_desktop_app.ViewModels"
-             x:Class="native_desktop_app.Views.MessagesView"
+             xmlns:vm="using:NativeDesktopApp.ViewModels"
+             x:Class="NativeDesktopApp.Views.MessagesView"
              x:DataType="vm:MessagesViewModel">
 
     <DockPanel LastChildFill="True" Margin="0,0,0,0">

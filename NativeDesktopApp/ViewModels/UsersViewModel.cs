@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.Input;
 using DatabaseAccess;
 using RabbitMQHelper;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     ViewModel for displaying and managing all users in the system.

@@ -20,7 +20,7 @@ using DatabaseAccess;
 using DatabaseAccess.Models;
 using RabbitMQHelper;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     ViewModel for the printers management page.

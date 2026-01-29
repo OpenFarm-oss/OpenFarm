@@ -27,7 +27,7 @@ using RabbitMQHelper;
 
 // for Win32Exception
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     ViewModel backing the Staff Review page: queues jobs needing operator decisions,

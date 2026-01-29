@@ -2,7 +2,7 @@ using System;
 using Avalonia;
 using Avalonia.ReactiveUI;
 
-namespace native_desktop_app;
+namespace NativeDesktopApp;
 
 internal sealed class Program
 {

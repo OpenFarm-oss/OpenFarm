@@ -1,9 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:native_desktop_app.ViewModels"
-             xmlns:conv="using:native_desktop_app.Converters"
+             xmlns:vm="using:NativeDesktopApp.ViewModels"
+             xmlns:conv="using:NativeDesktopApp.Converters"
              xmlns:global="clr-namespace:"
-             x:Class="native_desktop_app.Views.PrintJobsView"
+             x:Class="NativeDesktopApp.Views.PrintJobsView"
              x:DataType="vm:PrintJobsViewModel">
 
 

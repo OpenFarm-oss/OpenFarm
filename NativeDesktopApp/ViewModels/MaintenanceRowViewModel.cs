@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Avalonia.Media;
 using DatabaseAccess.Models;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 /// Functions as a DTO and wrapper for the

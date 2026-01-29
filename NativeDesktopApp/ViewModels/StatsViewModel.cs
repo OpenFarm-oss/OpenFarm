@@ -13,7 +13,7 @@ using DatabaseAccess;
 using DatabaseAccess.Models;
 using RabbitMQHelper;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     ViewModel responsible for computing and exposing high-level statistics

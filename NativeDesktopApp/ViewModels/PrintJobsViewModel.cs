@@ -24,7 +24,7 @@ using RabbitMQHelper;
 using RabbitMQHelper.MessageTypes;
 using Color = Avalonia.Media.Color;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 /// ViewModel that loads print jobs (models), applies filters on models,

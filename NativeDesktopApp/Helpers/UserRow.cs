@@ -1,7 +1,7 @@
 using System;
 using DatabaseAccess.Models;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     Lightweight row model for the Users view.

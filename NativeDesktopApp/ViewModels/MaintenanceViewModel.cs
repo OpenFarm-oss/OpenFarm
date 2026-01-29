@@ -9,7 +9,7 @@ using DatabaseAccess;
 using DatabaseAccess.Models;
 using RabbitMQHelper;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 public class MaintenanceViewModel : ViewModelBase
 {

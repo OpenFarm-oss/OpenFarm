@@ -1,6 +1,6 @@
 using DatabaseAccess.Models;
 
-namespace native_desktop_app.ViewModels;
+namespace NativeDesktopApp.ViewModels;
 
 /// <summary>
 ///     Represents a single printer entry in the Printers view.

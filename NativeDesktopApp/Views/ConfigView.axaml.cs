@@ -2,9 +2,9 @@ using System;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using native_desktop_app.ViewModels;
+using NativeDesktopApp.ViewModels;
 
-namespace native_desktop_app.Views;
+namespace NativeDesktopApp.Views;
 
 public partial class ConfigView : UserControl
 {

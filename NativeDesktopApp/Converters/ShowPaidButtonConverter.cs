@@ -1,7 +1,7 @@
 using System;
 using Avalonia.Data.Converters;
 
-namespace native_desktop_app.Converters
+namespace NativeDesktopApp.Converters
 {
     public class ShowPaidButtonConverter : IValueConverter
     {
