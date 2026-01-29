@@ -23,3 +23,5 @@ appsettings.local.json
 *.idea
 /Logs
 *secret.json
+
+*pop.sql
