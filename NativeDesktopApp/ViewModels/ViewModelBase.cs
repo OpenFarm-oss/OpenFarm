@@ -26,7 +26,7 @@ namespace NativeDesktopApp.ViewModels;
 /// </summary>
 public abstract class ViewModelBase : INotifyPropertyChanged
 {
-    private readonly AppStateModel _appStateModel;
+    protected readonly AppStateModel _appStateModel;
 
     protected ViewModelBase(AppStateModel appStateModel)
     {

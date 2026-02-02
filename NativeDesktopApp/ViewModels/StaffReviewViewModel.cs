@@ -23,6 +23,7 @@ using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.Input;
 using DatabaseAccess;
 using DatabaseAccess.Models;
+using NativeDesktopApp.Models;
 using RabbitMQHelper;
 
 // for Win32Exception
@@ -54,6 +55,9 @@ public class StaffReviewViewModel : ViewModelBase
     // View names for the 8 images
     private static readonly string[] ViewNames = { "NORTH_WEST", "WEST", "SOUTH_WEST", "SOUTH", "SOUTH_EAST", "EAST", "NORTH_EAST", "NORTH" };
 
+    // Staff Review Jobs Property for UI Binding
+    public ReadOnlyObservableCollection<PrintJob> NeedToBeReviewedJobs { get; set; }
+
     /// <summary>
     ///     Initializes a new instance of <see cref="StaffReviewViewModel" />, validating the
     ///     database connection, wiring commands, and triggering the initial load.
@@ -61,10 +65,10 @@ public class StaffReviewViewModel : ViewModelBase
     /// <exception cref="InvalidOperationException">
     ///     Thrown if the <c>DATABASE_CONNECTION_STRING</c> environment variable is not set.
     /// </exception>
-    public StaffReviewViewModel(DatabaseAccessHelper databaseAccessHelper, IRmqHelper rmqHelper) : base(
-        databaseAccessHelper, rmqHelper)
-    {
-        _ = LoadJobsAsync();
+    public StaffReviewViewModel(AppStateModel appStateModel) : base(
+  appStateModel) {
+
+        NeedToBeReviewedJobs = appStateModel.JobsAwaitingStaffReview;
 
         // Wire commands to async handlers.
         MarkOperatorApprovedCommand = new RelayCommand<PrintJob>(async job => { if (job != null) await MarkApprovedAsync(job); });
@@ -74,10 +78,7 @@ public class StaffReviewViewModel : ViewModelBase
         NextImageCommand = new RelayCommand(() => NavigateToNextImage(), () => CanNavigateToNext);
     }
 
-    /// <summary>
-    ///     Jobs requiring staff review (i.e., those with status <c>systemApproved</c>).
-    /// </summary>
-    public ObservableCollection<PrintJob> NeedToBeReviewedJobs { get; set; } = new();
+
 
     /// <summary>
     ///     Command that marks a job as operator-approved (status becomes <c>operatorApproved</c>).
@@ -185,27 +186,6 @@ public class StaffReviewViewModel : ViewModelBase
         OpenWithDefaultApp(filePath);
     });
 
-
-    /// <summary>
-    ///     Fetches all jobs and populates <see cref="NeedToBeReviewedJobs" /> with those
-    ///     that are in the <c>systemApproved</c> state (awaiting operator review). Also
-    ///     hydrates <see cref="PrintJob.User" /> for display.
-    /// </summary>
-    private async Task LoadJobsAsync()
-    {
-        var jobs = await _databaseAccessHelper.PrintJobs.GetPrintJobsAsync();
-        NeedToBeReviewedJobs.Clear();
-
-        foreach (var job in jobs)
-            if (job.JobStatus.Equals("systemApproved"))
-            {
-                job.User = await _databaseAccessHelper.Users.GetUserAsync(job.UserId!.Value);
-                NeedToBeReviewedJobs.Add(job);
-            }
-
-        if (NeedToBeReviewedJobs.Count > 0) SelectedJob = NeedToBeReviewedJobs[0];
-    }
-
     /// <summary>
     ///     Handles selection of a job: updates <see cref="SelectedJob" /> and attempts to
     ///     load its thumbnails from the file server.
@@ -220,22 +200,17 @@ public class StaffReviewViewModel : ViewModelBase
     /// </summary>
     private async Task MarkApprovedAsync(PrintJob job)
     {
-        await _databaseAccessHelper.PrintJobs.UpdatePrintJobStatusAsync(job.Id, "operatorApproved");
-        NeedToBeReviewedJobs.Remove(job);
+        await _appStateModel.MarkStaffApprovedAsync(job);
         ClearThumbnails();
-        NeedToBeReviewedJobs.Remove(job);
         await SelectNextAfterRemovalAsync(job);
     }
 
     /// <summary>
     ///     Marks the specified job as rejected and removes it from the review list.
     /// </summary>
-    private async Task MarkNotApprovedAsync(PrintJob job)
-    {
-        await _databaseAccessHelper.PrintJobs.UpdatePrintJobStatusAsync(job.Id, "rejected");
-        NeedToBeReviewedJobs.Remove(job);
+    private async Task MarkNotApprovedAsync(PrintJob job) {
+        await _appStateModel.MarkNotApprovedAsync(job);
         ClearThumbnails();
-        NeedToBeReviewedJobs.Remove(job);
         await SelectNextAfterRemovalAsync(job);
     }
 

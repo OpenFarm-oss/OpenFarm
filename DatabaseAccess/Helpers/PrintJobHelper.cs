@@ -170,6 +170,18 @@ public class PrintJobHelper(OpenFarmContext context) : BaseHelper(context)
     }
 
     /// <summary>
+    ///     Retrieves systemApproved print jobs with the associated User.
+    /// </summary>
+    /// <returns>A task that resolves to a list of systemApproved print jobs.</returns>
+    public Task<List<PrintJob>> GetSystemApprovedPrintJobsAsync()
+    {
+        return PrintJobs
+            .Where(job => job.JobStatus == "systemApproved")
+            .Include(job => job.User)
+            .ToListAsync();
+    }
+
+    /// <summary>
     ///     Retrieves a print job by identifier.
     /// </summary>
     /// <param name="printJobId">The print job identifier to look up.</param>
