@@ -65,38 +65,39 @@ public class MainWindowViewModel : ViewModelBase
     /// </summary>
     private void UpdateCurrentViewModel()
     {
-        switch (SelectedTabIndex)
-        {
-            case 0:
-                CurrentViewModel = new HomeViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 1:
-                CurrentViewModel = new PrintJobsViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 2:
-                CurrentViewModel = new StaffReviewViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 3:
-                CurrentViewModel = new PrintersViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 4:
-                CurrentViewModel = new MessagesViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 5:
-                CurrentViewModel = new UsersViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 6:
-                CurrentViewModel = new StatsViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 7:
-                CurrentViewModel = new ConfigViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            case 8:
-                CurrentViewModel = new MaintenanceViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-            default:
-                CurrentViewModel = new HomeViewModel(_databaseAccessHelper, _rmqHelper);
-                break;
-        }
+        // switch (SelectedTabIndex)
+        // {
+        //     case 0:
+        //         CurrentViewModel = new HomeViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 1:
+        //         CurrentViewModel = new PrintJobsViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 2:
+        //         CurrentViewModel = new StaffReviewViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 3:
+        //         CurrentViewModel = new PrintersViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 4:
+        //         CurrentViewModel = new MessagesViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 5:
+        //         CurrentViewModel = new UsersViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 6:
+        //         CurrentViewModel = new StatsViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 7:
+        //         CurrentViewModel = new ConfigViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     case 8:
+        //         CurrentViewModel = new MaintenanceViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        //     default:
+        //         CurrentViewModel = new HomeViewModel(_databaseAccessHelper, _rmqHelper);
+        //         break;
+        // }
+        CurrentViewModel = new StaffReviewViewModel(_appStateModel); // TODO: resolve after testing
     }
 }
