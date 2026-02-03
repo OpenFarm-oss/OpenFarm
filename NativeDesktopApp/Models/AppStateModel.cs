@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
 using DatabaseAccess;
 using DatabaseAccess.Models;
@@ -14,16 +12,19 @@ namespace NativeDesktopApp.Models;
 
 public class AppStateModel
 {
+    #region Global Properties
+
     private readonly DatabaseAccessHelper _databaseAccessHelper;
     private readonly IRmqHelper _rmqHelper;
 
-    // private ObservableCollection<PrintJob> _activeJobsList;
     /// <summary>
     ///     Jobs requiring staff review (i.e., those with status <c>systemApproved</c>).
     /// </summary>
     private readonly ObservableCollection<PrintJob> _jobsAwaitingStaffReview;
 
     public ReadOnlyObservableCollection<PrintJob> JobsAwaitingStaffReview;
+
+    #endregion
 
     public AppStateModel(DatabaseAccessHelper databaseAccessHelper, IRmqHelper rmqHelper)
     {
@@ -41,33 +42,7 @@ public class AppStateModel
         result.ContinueWith(task => _jobsAwaitingStaffReview.AddRange(task.Result));
     }
 
-    private void AttachRMQListeners(Task obj)
-    {
-        if (_rmqHelper.IsConnected())
-        {
-            _rmqHelper.AddListener<Message>(QueueNames.DesktopNotification, m => ProcessRMQNotification(m).Result);
-            // TODO: add listeners as required
-        }
-        else
-        {
-            Task.Delay(1000).ContinueWith(AttachRMQListeners);
-        }
-    }
-
-    public async Task MarkStaffApprovedAsync(PrintJob job)
-    {
-        var result = await _databaseAccessHelper.PrintJobs.UpdatePrintJobStatusAsync(job.Id, "operatorApproved");
-        if (result == TransactionResult.Succeeded)
-            _jobsAwaitingStaffReview.Remove(job);
-    }
-
-    public async Task MarkNotApprovedAsync(PrintJob job)
-    {
-        TransactionResult result = await _databaseAccessHelper.PrintJobs.UpdatePrintJobStatusAsync(job.Id, "rejected");
-        if (result == TransactionResult.Succeeded)
-            _jobsAwaitingStaffReview.Remove(job);
-        // TODO: check TransactionResult success; upon failure, show error in a modal popup within UI
-    }
+    #region RMQ Methods
 
     private async Task<bool> ProcessRMQNotification(Message message)
     {
@@ -88,4 +63,38 @@ public class AppStateModel
             return false;
         }
     }
+
+    private void AttachRMQListeners(Task obj)
+    {
+        if (_rmqHelper.IsConnected())
+        {
+            _rmqHelper.AddListener<Message>(QueueNames.DesktopNotification, m => ProcessRMQNotification(m).Result);
+            // TODO: add listeners as required
+        }
+        else
+        {
+            Task.Delay(1000).ContinueWith(AttachRMQListeners);
+        }
+    }
+
+    #endregion
+
+    #region Staff Review AppState
+
+    public async Task MarkStaffApprovedAsync(PrintJob job)
+    {
+        var result = await _databaseAccessHelper.PrintJobs.UpdatePrintJobStatusAsync(job.Id, "operatorApproved");
+        if (result == TransactionResult.Succeeded)
+            _jobsAwaitingStaffReview.Remove(job);
+    }
+
+    public async Task MarkNotApprovedAsync(PrintJob job)
+    {
+        TransactionResult result = await _databaseAccessHelper.PrintJobs.UpdatePrintJobStatusAsync(job.Id, "rejected");
+        if (result == TransactionResult.Succeeded)
+            _jobsAwaitingStaffReview.Remove(job);
+        // TODO: check TransactionResult success; upon failure, show error in a modal popup within UI
+    }
+
+    #endregion
 }
