@@ -61,5 +61,6 @@ public enum QueueNames
     DiscordJobValidated,
     DiscordPrintFinished,
     EmailOperatorReply,
-    DeleteFile
+    DeleteFile,
+    DesktopNotification
 }
