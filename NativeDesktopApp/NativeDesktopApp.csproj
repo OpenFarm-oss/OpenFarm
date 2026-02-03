@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net10.0</TargetFramework>
@@ -40,5 +40,29 @@
         <ProjectReference Include="..\DatabaseAccess\DatabaseAccess.csproj"/>
         <ProjectReference Include="..\FileServer\FileProcessor\FileProcessor.csproj"/>
         <ProjectReference Include="..\RabbitMQHelper\RabbitMQHelper.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- This ItemGroup is intended to allow the desktop app to build during development while views are being
+                    updated to use the new AppStateModel.-->
+        <!-- TODO: Remove these as the views are implemented. -->
+        <AvaloniaXaml Remove="Views/ConfigView.axaml"/>
+        <Compile Remove="Views/ConfigView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/HomeView.axaml"/>
+        <Compile Remove="Views/HomeView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/MaintenanceView.axaml"/>
+        <Compile Remove="Views/MaintenanceView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/MessagesView.axaml"/>
+        <Compile Remove="Views/MessagesView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/PrintersView.axaml"/>
+        <Compile Remove="Views/PrintersView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/PrintersView.axaml"/>
+        <Compile Remove="Views/PrintersView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/PrintJobsView.axaml"/>
+        <Compile Remove="Views/PrintJobsView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/StatsView.axaml"/>
+        <Compile Remove="Views/StatsView.axaml.cs"/>
+        <AvaloniaXaml Remove="Views/UsersView.axaml"/>
+        <Compile Remove="Views/UsersView.axaml.cs"/>
     </ItemGroup>
 </Project>
