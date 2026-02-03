@@ -185,10 +185,14 @@ public class PrintJobHelper(OpenFarmContext context) : BaseHelper(context)
     ///     Retrieves a print job by identifier.
     /// </summary>
     /// <param name="printJobId">The print job identifier to look up.</param>
-    /// <returns>A task that resolves to the print job, or null if not found.</returns>
-    public async Task<PrintJob?> GetPrintJobAsync(long printJobId)
+    /// <param name="includeUserInfo">If true, the User is also fetched and included on the PrintJob</param>
+    /// <returns>A task that resolves to the print job, or null if not found. Includes User if 'includeUserInfo' != false</returns>
+    public async Task<PrintJob?> GetPrintJobAsync(long printJobId, bool includeUserInfo = false)
     {
-        return await PrintJobs.FirstOrDefaultAsync(job => job.Id == printJobId);
+        if (includeUserInfo)
+            return await PrintJobs.Include(job => job.User).FirstOrDefaultAsync(job => job.Id == printJobId);
+        else
+            return await PrintJobs.FirstOrDefaultAsync(job => job.Id == printJobId);
     }
 
     /// <summary>
