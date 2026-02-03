@@ -33,10 +33,6 @@ public class AppStateModel
 
         AttachRMQListeners(Task.CompletedTask);
 
-
-// TODO: Attach RMQ listener to appropriate chanel to listen for the PSPS marking a job "systemApproved"
-// TODO: Write listener method to query new job, check it is systemApproved, and add it to _jobsAwaitingStaffReview
-
         // Retrieve PrintJobs that are ready to be reviewed by an Operator
         _jobsAwaitingStaffReview = new ObservableCollection<PrintJob>();
         JobsAwaitingStaffReview = new ReadOnlyObservableCollection<PrintJob>(_jobsAwaitingStaffReview);
